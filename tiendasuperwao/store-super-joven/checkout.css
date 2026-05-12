@@ -1,0 +1,1181 @@
+:root {
+    --verde: #2ecc71;
+    --verde-oscuro: #20b85f;
+    --rojo: #ef4444;
+    --fondo: #eefbf7;
+    --texto: #1f2937;
+    --gris: #6b7280;
+    --borde: #e5e7eb;
+    --blanco: #ffffff;
+    --sombra: 0 18px 40px rgba(15, 23, 42, 0.10);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: linear-gradient(120deg, #eefaff 0%, #effbea 55%, #fff7df 100%);
+}
+
+.checkout-header {
+    height: 78px;
+    padding: 0 44px;
+    background: var(--blanco);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: auto minmax(260px, 420px) auto;
+    align-items: center;
+    gap: 26px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--verde);
+    text-decoration: none;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.logo-icono {
+    font-size: 23px;
+}
+
+.buscador {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f5f6fa;
+    border-radius: 999px;
+    padding: 0 18px;
+}
+
+.buscador input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+}
+
+.buscador span {
+    font-size: 25px;
+    color: #111;
+}
+
+.checkout-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+}
+
+.checkout-nav a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 900;
+    position: relative;
+    white-space: nowrap;
+}
+
+.checkout-nav a:hover {
+    color: var(--verde);
+}
+
+.cart-link {
+    text-decoration: underline !important;
+}
+
+#contadorCarrito {
+    position: absolute;
+    top: -14px;
+    right: -22px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--rojo);
+    color: white;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icono {
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.checkout-page {
+    width: min(1220px, calc(100% - 42px));
+    margin: 0 auto;
+    padding: 48px 0 70px;
+}
+
+.checkout-steps {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    width: min(760px, 100%);
+    margin: 0 auto 42px;
+}
+
+.step {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    color: var(--gris);
+    font-weight: 900;
+}
+
+.step-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--verde);
+    background: white;
+    color: var(--verde);
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+}
+
+.step.done .step-icon {
+    background: white;
+}
+
+.step.active {
+    color: var(--verde);
+}
+
+.step.active .step-icon {
+    background: var(--verde);
+    color: white;
+    box-shadow: 0 10px 24px rgba(46, 204, 113, 0.35);
+}
+
+.step-line {
+    height: 2px;
+    background: var(--verde);
+    margin: 0 8px 34px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 370px;
+    gap: 24px;
+    align-items: start;
+}
+
+.checkout-card,
+.summary-card,
+.mensaje-bloque,
+.checkout-benefits {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+.payment-card {
+    padding: 30px;
+}
+
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.payment-header h1 {
+    margin: 0 0 12px;
+    font-size: 30px;
+}
+
+.payment-header p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 16px;
+}
+
+.secure-label {
+    color: var(--gris);
+    font-size: 15px;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+.payment-content {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 22px;
+}
+
+.payment-tabs {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+}
+
+.payment-tab {
+    min-height: 76px;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background: white;
+    padding: 18px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.payment-tab span {
+    font-size: 26px;
+}
+
+.payment-tab.active,
+.payment-tab:hover {
+    border-color: var(--verde);
+    background: linear-gradient(135deg, #effff6, #ffffff);
+    box-shadow: 0 8px 18px rgba(46, 204, 113, 0.12);
+}
+
+.payment-tab.active strong {
+    color: var(--verde);
+}
+
+.payment-form {
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 24px;
+    background: white;
+}
+
+.method-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.method-title-row h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.card-brands {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.card-brands span {
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-size: 11px;
+    font-weight: 900;
+    background: #f9fafb;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font: inherit;
+    outline: none;
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.12);
+}
+
+.input-icon-wrap {
+    position: relative;
+}
+
+.input-icon-wrap input {
+    padding-right: 48px;
+}
+
+.input-icon-wrap span {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gris);
+}
+
+.payment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.protected-box,
+.info-payment-box,
+.bank-box {
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 6px;
+}
+
+.protected-box {
+    background: #edfff5;
+    border: 1px solid #c7f5db;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.protected-box span {
+    font-size: 24px;
+}
+
+.protected-box strong {
+    color: var(--verde);
+}
+
+.protected-box p,
+.info-payment-box p,
+.bank-box p {
+    margin: 6px 0 0;
+    color: var(--gris);
+    line-height: 1.4;
+}
+
+.info-payment-box {
+    background: #f9fafb;
+    border: 1px solid var(--borde);
+}
+
+.bank-box {
+    background: #effff6;
+    border: 1px solid #c7f5db;
+}
+
+.bank-box p {
+    margin: 8px 0;
+}
+
+.summary-card {
+    padding: 30px;
+    position: sticky;
+    top: 100px;
+}
+
+.summary-card h2 {
+    margin: 0 0 32px;
+    font-size: 28px;
+}
+
+.checkout-products {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.checkout-product {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 12px;
+}
+
+.checkout-product img {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.checkout-product h3 {
+    font-size: 15px;
+    margin: 0 0 4px;
+}
+
+.checkout-product p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+.checkout-product strong {
+    white-space: nowrap;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 22px 0;
+    color: var(--texto);
+    font-size: 17px;
+}
+
+.summary-line strong {
+    font-size: 18px;
+}
+
+.summary-line.total {
+    border-top: 1px solid var(--borde);
+    padding-top: 26px;
+    margin-top: 30px;
+    color: var(--verde);
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.summary-line.total strong {
+    font-size: 22px;
+}
+
+.pay-btn {
+    width: 100%;
+    height: 68px;
+    margin-top: 26px;
+    font-size: 18px;
+}
+
+.safe-pay {
+    margin-top: 22px;
+    text-align: center;
+    color: var(--gris);
+    font-size: 16px;
+}
+
+.checkout-benefits {
+    margin-top: 22px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr repeat(3, auto);
+    gap: 28px;
+    align-items: center;
+}
+
+.back-cart {
+    color: var(--verde);
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefit-item span {
+    color: var(--verde);
+    font-size: 30px;
+}
+
+.benefit-item strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.benefit-item p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.mensaje-bloque {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 34px;
+}
+
+.mensaje-bloque h2 {
+    margin: 0 0 12px;
+    font-size: 28px;
+}
+
+.mensaje-bloque p {
+    color: var(--gris);
+    margin-bottom: 22px;
+}
+
+.mensaje-actions,
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    min-height: 50px;
+    min-width: 170px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-verde {
+    background: var(--verde);
+    color: white;
+    box-shadow: 0 12px 22px rgba(46, 204, 113, 0.28);
+}
+
+.btn-verde:hover {
+    background: var(--verde-oscuro);
+}
+
+.btn-blanco {
+    background: white;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.62);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal-card {
+    width: min(460px, 100%);
+    background: white;
+    border-radius: 18px;
+    padding: 34px 28px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    background: #dcfce7;
+    color: var(--verde);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.modal-card h2 {
+    margin: 0 0 12px;
+}
+
+.modal-card p {
+    color: var(--gris);
+    line-height: 1.5;
+}
+
+.oculto {
+    display: none !important;
+}
+
+@media (max-width: 1050px) {
+    .checkout-header {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 18px 22px;
+    }
+
+    .buscador {
+        width: 100%;
+    }
+
+    .checkout-nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        position: static;
+    }
+
+    .checkout-benefits {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 780px) {
+    .checkout-steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .step-line {
+        width: 2px;
+        height: 26px;
+        margin: 0 auto;
+    }
+
+    .payment-header {
+        flex-direction: column;
+    }
+
+    .payment-content {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-row {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .method-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mensaje-actions,
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   HEADER IGUAL AL CARRITO + MENÚ DE CUENTA
+========================================================= */
+
+.navbar {
+    height: 78px;
+    padding: 0 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--blanco);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar .logo {
+    flex-shrink: 0;
+}
+
+.navbar .buscador {
+    width: min(360px, 30vw);
+    min-width: 260px;
+    height: 46px;
+    border-radius: 25px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: flex-end;
+}
+
+.menu a,
+.menu .header-action {
+    min-height: 40px;
+    padding: 8px 13px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--texto);
+    text-decoration: none !important;
+    font-weight: 900;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    position: relative;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.menu a:hover,
+.menu .header-action:hover,
+.menu a:focus,
+.menu .header-action:focus,
+.menu a.activo,
+.menu .header-action.activo {
+    background: var(--verde);
+    color: white !important;
+    text-decoration: none !important;
+    transform: translateY(-1px);
+}
+
+.menu a.activo {
+    background: var(--verde);
+    color: white !important;
+}
+
+.cart-link {
+    text-decoration: none !important;
+}
+
+.menu a:hover #contadorCarrito,
+.menu a.activo #contadorCarrito {
+    background: white;
+    color: var(--verde);
+}
+
+.account-box {
+    position: relative;
+}
+
+.account-menu {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 220px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    padding: 10px;
+    z-index: 200;
+}
+
+.account-menu button,
+.account-menu a {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    color: #111827;
+    text-decoration: none !important;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.account-menu button:hover,
+.account-menu a:hover {
+    background: #f3f4f6;
+    color: #111827 !important;
+    transform: none;
+}
+
+.account-menu .danger-option {
+    color: var(--rojo);
+}
+
+/* Mantiene compatibilidad si algún archivo viejo usa checkout-header */
+.checkout-header {
+    display: none;
+}
+
+/* =========================================================
+   MODAL DE LOGIN Y PERFIL EN CHECKOUT
+========================================================= */
+
+.cerrar {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: var(--texto);
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.modal-card {
+    position: relative;
+}
+
+.modal-icono {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: var(--verde);
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+}
+
+.modal-card form {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.62);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 120;
+    padding: 20px;
+}
+
+.login-modal {
+    background: white;
+    border-radius: 16px;
+    width: 920px;
+    max-width: 96%;
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 36px;
+    position: relative;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+}
+
+.profile-modal {
+    width: 860px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.login-modal h2 {
+    font-size: 34px;
+    margin: 0 0 8px;
+}
+
+.register-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.login-modal label {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+.login-modal input,
+.login-modal select,
+.login-modal textarea {
+    border: 1px solid #dfe4ea;
+    border-radius: 12px;
+    min-height: 52px;
+    padding: 14px 18px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-modal textarea {
+    resize: vertical;
+}
+
+.profile-modal input:disabled,
+.profile-modal textarea:disabled,
+.profile-modal select:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.full-label {
+    margin-top: 22px;
+}
+
+@media (max-width: 1050px) {
+    .navbar {
+        height: auto;
+        padding: 18px 22px;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+    }
+
+    .navbar .buscador {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .menu {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .register-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-modal {
+        padding: 28px 20px;
+    }
+}
+
+/* =========================================================
+   RECUPERAR CONTRASEÑA CON OTP
+========================================================= */
+.hidden,
+.oculto {
+    display: none !important;
+}
+
+.forgot-password-btn {
+    width: auto;
+    border: none;
+    background: transparent;
+    color: #16a34a;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 6px 0;
+    justify-self: start;
+}
+
+.forgot-password-btn:hover {
+    color: #15803d;
+    text-decoration: underline;
+}
+
+.password-reset-form {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+}
+
+.reset-subtitle {
+    color: var(--gris, #6b7280);
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 4px;
+}
+
+.password-reset-message {
+    margin-top: 6px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.password-reset-message.success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.password-reset-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+#resetCode {
+    letter-spacing: 0.35em;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+}
+/* =========================================================
+   FIX PERFIL HEADER - QUITAR BORDE DE BOTÓN NATIVO
+========================================================= */
+
+.store-actions .header-action,
+.store-actions button.header-action,
+.menu .header-action,
+.menu button.header-action {
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  color: #2b2b2b;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none !important;
+
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Hover verde igual que Mis Listas y Carrito */
+.store-actions .header-action:hover,
+.store-actions button.header-action:hover,
+.menu .header-action:hover,
+.menu button.header-action:hover {
+  background: #22c55e;
+  color: white;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* Cuando el botón tenga foco, que no salga borde feo */
+.store-actions .header-action:focus,
+.store-actions button.header-action:focus,
+.menu .header-action:focus,
+.menu button.header-action:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Si quieres dejar el perfil activo cuando está el menú abierto */
+.account-box.menu-open .header-action,
+.account-box.active .header-action {
+  background: #22c55e;
+  color: white !important;
+}
+/* =========================================================
+   HEADER MÁS PEQUEÑO - PERFIL, MIS LISTAS Y CARRITO
+========================================================= */
+
+.menu {
+  gap: 18px !important;
+}
+
+.menu a,
+.menu .header-action,
+.menu button.header-action {
+  min-height: 34px !important;
+  padding: 6px 10px !important;
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+  font-weight: 800 !important;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu a.activo {
+  padding: 6px 12px !important;
+}
+
+/* Iconos un poco más pequeños */
+.menu a,
+.menu .header-action {
+  line-height: 1;
+}
+
+/* Contador del carrito más pequeño */
+#contadorCarrito {
+  top: -9px !important;
+  right: -14px !important;
+
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+
+  font-size: 11px !important;
+}
+
+/* Menú desplegable del perfil más compacto */
+.account-menu {
+  width: 220px !important;
+  padding: 10px !important;
+  gap: 4px !important;
+}
+
+.account-menu button,
+.account-menu a {
+  min-height: 38px !important;
+  padding: 8px 10px !important;
+  font-size: 14px !important;
+  border-radius: 9px !important;
+}

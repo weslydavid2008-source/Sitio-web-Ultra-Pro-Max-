@@ -1,0 +1,1494 @@
+:root {
+    --verde: #2ecc71;
+    --verde-oscuro: #20b85f;
+    --rojo: #e9483e;
+    --fondo: #eefbf7;
+    --texto: #2d2d2d;
+    --gris: #6b7280;
+    --borde: #e7e7e7;
+    --blanco: #ffffff;
+    --sombra: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: linear-gradient(120deg, #eefaff 0%, #effbea 55%, #fff7df 100%);
+}
+
+.navbar {
+    height: 78px;
+    padding: 0 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--blanco);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--verde);
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo-icono {
+    font-size: 23px;
+}
+
+.buscador {
+    width: min(360px, 30vw);
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f5f6fa;
+    border-radius: 25px;
+    padding: 0 18px;
+}
+
+.buscador input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+}
+
+.buscador span {
+    font-size: 28px;
+    color: #111;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu a {
+    color: #2b2b2b;
+    text-decoration: none;
+    font-weight: 800;
+    position: relative;
+}
+
+#contadorCarrito {
+    position: absolute;
+    top: -12px;
+    right: -22px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--rojo);
+    color: white;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icono {
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.contenedor {
+    width: min(1220px, calc(100% - 42px));
+    margin: auto;
+}
+
+.hero-listas {
+    width: min(1220px, calc(100% - 42px));
+    min-height: 210px;
+    margin: 42px auto 30px;
+    padding: 48px 34px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #2ecc71, #16a34a);
+    color: white;
+    box-shadow: var(--sombra);
+    display: flex;
+    align-items: center;
+}
+
+.hero-listas h1 {
+    margin: 0 0 18px;
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 900;
+}
+
+.hero-listas p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.resumen-listas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.resumen-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--sombra);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.resumen-icono {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #edfff5;
+    color: var(--verde);
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+}
+
+.resumen-card p {
+    margin: 0 0 8px;
+    color: var(--gris);
+    font-weight: 800;
+}
+
+.resumen-card h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.panel-listas {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--sombra);
+    margin-bottom: 70px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.panel-header h2 {
+    margin: 0 0 6px;
+    font-size: 28px;
+}
+
+.panel-header p {
+    margin: 0;
+    color: var(--gris);
+}
+
+.btn {
+    min-height: 48px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-verde {
+    background: var(--verde);
+    color: white;
+    box-shadow: 0 12px 22px rgba(46, 204, 113, 0.28);
+}
+
+.btn-verde:hover {
+    background: var(--verde-oscuro);
+}
+
+.btn-actualizar {
+    width: auto;
+}
+
+.historial-compras {
+    display: grid;
+    gap: 18px;
+}
+
+.compra-card {
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+}
+
+.compra-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px;
+    background: #f9fafb;
+    border-bottom: 1px solid var(--borde);
+}
+
+.compra-header h3 {
+    margin: 0 0 6px;
+    font-size: 20px;
+}
+
+.compra-header p {
+    margin: 0;
+    color: var(--gris);
+}
+
+.compra-total {
+    text-align: right;
+}
+
+.compra-total strong {
+    display: block;
+    color: var(--verde);
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.estado-pill {
+    display: inline-flex;
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.estado-pendiente {
+    background: #fef9c3;
+    color: #a16207;
+}
+
+.estado-en_camino {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.estado-entregado {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.estado-cancelado {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.compra-body {
+    padding: 18px 20px 20px;
+}
+
+.compra-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+    color: var(--gris);
+}
+
+.compra-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.compra-info strong {
+    color: var(--texto);
+}
+
+.productos-comprados {
+    display: grid;
+    gap: 12px;
+}
+
+.producto-comprado {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    background: #fafafa;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.producto-comprado img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.producto-comprado h4 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.producto-comprado p {
+    margin: 0;
+    color: var(--gris);
+}
+
+.producto-precio {
+    text-align: right;
+    font-weight: 900;
+    color: var(--verde);
+}
+
+.compra-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.listas-vacio {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.vacio-icono {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #edfff5;
+    color: var(--verde);
+    display: grid;
+    place-items: center;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.listas-vacio h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.listas-vacio p {
+    margin: 0 auto 24px;
+    max-width: 420px;
+    color: var(--gris);
+}
+
+.oculto {
+    display: none !important;
+}
+
+@media (max-width: 950px) {
+    .navbar {
+        height: auto;
+        padding: 18px 22px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .buscador {
+        order: 3;
+        width: 100%;
+    }
+
+    .menu {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .resumen-listas {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-actualizar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .hero-listas {
+        margin-top: 24px;
+        padding: 34px 24px;
+    }
+
+    .compra-info {
+        grid-template-columns: 1fr;
+    }
+
+    .compra-header {
+        flex-direction: column;
+    }
+
+    .compra-total {
+        text-align: left;
+    }
+
+    .producto-comprado {
+        grid-template-columns: 64px 1fr;
+    }
+
+    .producto-precio {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+}
+/* =========================================================
+   MENÚ DE CUENTA Y MODAL DE PERFIL
+   ========================================================= */
+
+.account-box {
+    position: relative;
+}
+
+.header-action {
+    border: none;
+    background: transparent;
+    color: #2b2b2b;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.header-action:hover {
+    text-decoration: underline;
+}
+
+.account-menu {
+    position: absolute;
+    top: 38px;
+    right: 0;
+    width: 220px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    padding: 10px;
+    z-index: 200;
+}
+
+.account-menu button,
+.account-menu a {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    color: #111827;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.account-menu button:hover,
+.account-menu a:hover {
+    background: #f3f4f6;
+}
+
+.account-menu .danger-option {
+    color: var(--rojo);
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    padding: 24px;
+    background: rgba(17, 24, 39, 0.62);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal {
+    width: min(860px, 96%);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 34px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: var(--sombra);
+    position: relative;
+}
+
+.profile-modal {
+    width: min(860px, 96%);
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.login-modal h2 {
+    margin: 0 0 8px;
+    font-size: 34px;
+}
+
+.modal-subtitle {
+    color: var(--gris);
+    font-size: 20px;
+    margin: 0 0 26px;
+}
+
+.register-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.login-modal label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 900;
+    color: #111827;
+}
+
+.login-modal input,
+.login-modal select,
+.login-modal textarea {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    background: white;
+}
+
+.login-modal textarea {
+    resize: vertical;
+}
+
+.login-modal input:disabled {
+    background: #f3f4f6;
+    color: var(--gris);
+}
+
+.full-label {
+    display: block;
+    margin-top: 18px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+@media (max-width: 700px) {
+    .register-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-modal {
+        padding: 24px;
+    }
+}
+/* =========================================================
+   HOVER VERDE EN PERFIL, MIS LISTAS Y CARRITO
+========================================================= */
+
+/* Página principal */
+.store-actions a,
+.store-actions .header-action,
+.store-actions .cart-btn {
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Carrito y Mis Listas */
+.menu a,
+.menu .header-action,
+.menu #linkSesion {
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.store-actions a:hover,
+.store-actions .header-action:hover,
+.store-actions .cart-btn:hover,
+.menu a:hover,
+.menu .header-action:hover,
+.menu #linkSesion:hover {
+  background: #22c55e;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Mantener activo bonito */
+.menu a.activo:hover,
+.store-actions a.activo:hover {
+  background: #22c55e;
+  color: white;
+  text-decoration: none;
+}
+
+/* Contador del carrito cuando se pasa el mouse */
+.store-actions .cart-btn:hover span,
+.menu a:hover #contadorCarrito {
+  background: white;
+  color: #22c55e;
+}
+/* =========================================================
+   MENÚ: SIN SUBRAYADO + BOTÓN ACTIVO VERDE
+========================================================= */
+
+/* Quitar subrayado normal, hover, focus y activo */
+.store-actions a,
+.store-actions a:hover,
+.store-actions a:focus,
+.store-actions a:active,
+.store-actions .header-action,
+.store-actions .header-action:hover,
+.store-actions .header-action:focus,
+.store-actions .cart-btn,
+.store-actions .cart-btn:hover,
+.store-actions .cart-btn:focus,
+.store-actions .cart-btn:active,
+.menu a,
+.menu a:hover,
+.menu a:focus,
+.menu a:active,
+.menu a.activo,
+.menu a.activo:hover,
+.menu #linkSesion,
+.menu #linkSesion:hover,
+.menu #linkSesion:focus,
+.menu #linkSesion:active {
+  text-decoration: none !important;
+}
+
+/* Estilo base de los botones del header */
+.store-actions a,
+.store-actions .header-action,
+.store-actions .cart-btn,
+.menu a,
+.menu #linkSesion {
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover: cuadrito verde al pasar el mouse */
+.store-actions a:hover,
+.store-actions .header-action:hover,
+.store-actions .cart-btn:hover,
+.menu a:hover,
+.menu #linkSesion:hover {
+  background: #22c55e;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Página actual: cuadrito verde fijo */
+.store-actions a.activo,
+.store-actions .cart-btn.activo,
+.menu a.activo {
+  background: #22c55e;
+  color: white !important;
+  border-radius: 12px;
+  text-decoration: none !important;
+}
+
+/* Contador del carrito cuando está activo o en hover */
+.store-actions .cart-btn:hover span,
+.store-actions .cart-btn.activo span,
+.menu a:hover #contadorCarrito,
+.menu a.activo #contadorCarrito {
+  background: white;
+  color: #22c55e;
+}
+/* =========================================================
+   RECUPERAR CONTRASEÑA CON OTP
+========================================================= */
+.hidden,
+.oculto {
+    display: none !important;
+}
+
+.forgot-password-btn {
+    width: auto;
+    border: none;
+    background: transparent;
+    color: #16a34a;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 6px 0;
+    justify-self: start;
+}
+
+.forgot-password-btn:hover {
+    color: #15803d;
+    text-decoration: underline;
+}
+
+.password-reset-form {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+}
+
+.reset-subtitle {
+    color: var(--gris, #6b7280);
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 4px;
+}
+
+.password-reset-message {
+    margin-top: 6px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.password-reset-message.success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.password-reset-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+#resetCode {
+    letter-spacing: 0.35em;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+/* =========================================================
+   MODAL DE INICIO DE SESIÓN EN MIS LISTAS
+========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.62);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal-card {
+    width: min(430px, 96%);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 34px 28px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: var(--sombra);
+    position: relative;
+    text-align: center;
+}
+
+.cerrar {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: var(--texto);
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.modal-icono {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: var(--verde);
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+}
+
+.modal-card h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.modal-card p {
+    color: var(--gris);
+    line-height: 1.45;
+}
+
+.modal-card form {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+}
+
+.modal-card label {
+    font-weight: 900;
+}
+
+.modal-card input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    font: inherit;
+    outline: none;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.btn-blanco {
+    background: white;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+}
+/* =========================================================
+   FIX PERFIL HEADER - QUITAR BORDE DE BOTÓN NATIVO
+========================================================= */
+
+.store-actions .header-action,
+.store-actions button.header-action,
+.menu .header-action,
+.menu button.header-action {
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  color: #2b2b2b;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none !important;
+
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Hover verde igual que Mis Listas y Carrito */
+.store-actions .header-action:hover,
+.store-actions button.header-action:hover,
+.menu .header-action:hover,
+.menu button.header-action:hover {
+  background: #22c55e;
+  color: white;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* Cuando el botón tenga foco, que no salga borde feo */
+.store-actions .header-action:focus,
+.store-actions button.header-action:focus,
+.menu .header-action:focus,
+.menu button.header-action:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Si quieres dejar el perfil activo cuando está el menú abierto */
+.account-box.menu-open .header-action,
+.account-box.active .header-action {
+  background: #22c55e;
+  color: white !important;
+}
+/* =========================================================
+   HEADER MÁS PEQUEÑO - PERFIL, MIS LISTAS Y CARRITO
+========================================================= */
+
+.menu {
+  gap: 18px !important;
+}
+
+.menu a,
+.menu .header-action,
+.menu button.header-action {
+  min-height: 34px !important;
+  padding: 6px 10px !important;
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+  font-weight: 800 !important;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu a.activo {
+  padding: 6px 12px !important;
+}
+
+/* Iconos un poco más pequeños */
+.menu a,
+.menu .header-action {
+  line-height: 1;
+}
+
+/* Contador del carrito más pequeño */
+#contadorCarrito {
+  top: -9px !important;
+  right: -14px !important;
+
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+
+  font-size: 11px !important;
+}
+
+/* Menú desplegable del perfil más compacto */
+.account-menu {
+  width: 220px !important;
+  padding: 10px !important;
+  gap: 4px !important;
+}
+
+.account-menu button,
+.account-menu a {
+  min-height: 38px !important;
+  padding: 8px 10px !important;
+  font-size: 14px !important;
+  border-radius: 9px !important;
+}
+
+
+/* =========================================================
+   LISTAS PERSONALES + HISTORIAL SEPARADO
+========================================================= */
+
+.listas-tabs {
+    width: min(1220px, calc(100% - 42px));
+    margin: 0 auto 22px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.lista-tab {
+    min-height: 42px;
+    padding: 0 18px;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: white;
+    color: var(--texto);
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+.lista-tab:hover,
+.lista-tab.activo {
+    background: var(--verde);
+    color: white;
+    border-color: var(--verde);
+}
+
+.crear-lista-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.crear-lista-form input,
+.agregar-producto-lista select,
+.agregar-producto-lista input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    background: white;
+}
+
+.listas-personalizadas {
+    display: grid;
+    gap: 18px;
+}
+
+.lista-personal-card {
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.lista-personal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.lista-personal-header h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+.lista-personal-header p {
+    margin: 0;
+    color: var(--gris);
+    font-weight: 800;
+}
+
+.lista-personal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.btn-blanco {
+    background: white;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+}
+
+.btn-danger-soft {
+    color: var(--rojo);
+}
+
+.agregar-producto-lista {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 100px auto;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    background: #f9fafb;
+    border: 1px solid var(--borde);
+    margin-bottom: 16px;
+}
+
+.productos-lista-personal {
+    display: grid;
+    gap: 10px;
+}
+
+.lista-producto-item {
+    display: grid;
+    grid-template-columns: 58px 1fr auto 36px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.lista-producto-item img {
+    width: 58px;
+    height: 58px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #f3f4f6;
+}
+
+.lista-producto-item h4 {
+    margin: 0 0 4px;
+    font-size: 16px;
+}
+
+.lista-producto-item p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.lista-producto-item strong {
+    color: var(--verde);
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.btn-quitar-producto {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #fee2e2;
+    color: #dc2626;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.lista-producto-vacio {
+    padding: 18px;
+    border: 1px dashed var(--borde);
+    border-radius: 12px;
+    color: var(--gris);
+    font-weight: 800;
+    text-align: center;
+}
+
+@media (max-width: 760px) {
+    .crear-lista-form,
+    .agregar-producto-lista,
+    .lista-producto-item {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-personal-header {
+        flex-direction: column;
+    }
+
+    .lista-personal-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* =========================================================
+   LISTA GUARDADA SIN PRODUCTOS
+========================================================= */
+
+.btn-lista-guardada,
+.btn-lista-guardada:disabled {
+  cursor: default;
+  background: #f8fafc !important;
+  color: #64748b !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+  opacity: 1;
+}
+
+.btn-lista-guardada:hover {
+  transform: none !important;
+  background: #f8fafc !important;
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   CREAR / EDITAR LISTAS CON PRODUCTOS ANTES DE GUARDAR
+========================================================= */
+
+.crear-lista-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 22px;
+}
+
+.lista-builder {
+    grid-template-columns: 1fr;
+    background: #f9fafb;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+
+.lista-builder-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.lista-builder-header h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+.lista-builder-header p {
+    margin: 0;
+    color: var(--gris);
+    font-weight: 800;
+}
+
+.lista-builder-label {
+    display: grid;
+    gap: 8px;
+    font-weight: 900;
+}
+
+.lista-builder-label input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    background: white;
+}
+
+.lista-builder-add {
+    margin-bottom: 0;
+}
+
+.lista-builder-preview {
+    margin-top: 2px;
+}
+
+.lista-builder-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.lista-personal-actions .btn {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+}
+
+@media (max-width: 760px) {
+    .lista-builder-actions {
+        flex-direction: column;
+    }
+
+    .lista-builder-actions .btn,
+    .crear-lista-toolbar .btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   BUSCADOR MIS LISTAS - FILTRA LISTAS POR PRODUCTO
+   El input queda normal; la ventana emergente va centrada
+========================================================= */
+
+.buscador {
+    position: relative;
+    overflow: visible;
+    z-index: 80;
+    border-radius: 999px;
+}
+
+.buscador button {
+    border: none;
+    background: transparent;
+    color: #111;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-results-panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(420px, 86vw);
+    max-height: 320px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 6px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    z-index: 300;
+}
+
+.search-result-item {
+    width: 100%;
+    min-height: 64px;
+    border: none;
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.search-result-item:hover {
+    background: #f0fdf4;
+    transform: translateX(2px);
+}
+
+.search-result-item img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #f3f4f6;
+}
+
+.search-result-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.search-result-info strong {
+    color: #111827;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-info small {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.search-result-price {
+    color: #111827;
+    font-size: 15px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.search-result-empty {
+    padding: 18px;
+    color: #6b7280;
+    font-weight: 800;
+    text-align: center;
+}
+
+.lista-personal-card.search-highlight {
+    outline: 3px solid #22c55e;
+    box-shadow: 0 16px 36px rgba(34, 197, 94, 0.22);
+}
+
+@media (max-width: 950px) {
+    .search-results-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .search-result-item {
+        grid-template-columns: 50px minmax(0, 1fr);
+    }
+
+    .search-result-price {
+        grid-column: 2;
+    }
+}
+
+
+/* =========================================================
+   BOTONES EDITAR Y ELIMINAR EN MIS LISTAS
+========================================================= */
+
+.lista-personal-actions [data-action="editar-lista"] {
+    background: #22c55e !important;
+    color: #ffffff !important;
+    border-color: #22c55e !important;
+    box-shadow: 0 12px 22px rgba(34, 197, 94, 0.22) !important;
+}
+
+.lista-personal-actions [data-action="editar-lista"]:hover {
+    background: #16a34a !important;
+    color: #ffffff !important;
+    border-color: #16a34a !important;
+}
+
+.lista-personal-actions [data-action="eliminar-lista"] {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 12px 22px rgba(239, 68, 68, 0.20) !important;
+}
+
+.lista-personal-actions [data-action="eliminar-lista"]:hover {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+    border-color: #dc2626 !important;
+}

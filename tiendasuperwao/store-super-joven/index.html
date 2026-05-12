@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store Super Joven</title>
+  <link rel="stylesheet" href="principal.css" />
+</head>
+<body>
+
+  <header class="store-header">
+    <a href="index.html" class="store-logo">
+      <span class="logo-icon"></span>
+      STORE SUPER JOVEN
+    </a>
+
+    <div class="store-search">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off" />
+      <button type="button" id="searchBtn" aria-label="Buscar productos">⌕</button>
+      <div class="search-results-panel hidden" id="searchResultsPanel"></div>
+    </div>
+
+    <nav class="store-actions menu">
+      <div class="account-box">
+        <button type="button" class="header-action" id="openLoginModal">
+          👤 Iniciar Sesión
+        </button>
+
+        <div class="account-menu hidden" id="accountMenu">
+          <button type="button" id="viewProfileBtn">Ver perfil</button>
+          <button type="button" id="editProfileBtn">Editar perfil</button>
+          <a href="../index.html" id="adminPanelLink" class="hidden">Ver administración</a>
+          <button type="button" id="logoutBtn" class="danger-option">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <a href="mis-listas.html">📋 Historial y Listas </a>
+
+      <a href="carrito.html" class="cart-btn" id="cartButton">
+        🛒 Carrito
+        <span id="cartCount">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero-section hero-carousel" id="heroCarousel">
+      <div class="hero-slide-bg" id="heroSlideBg"></div>
+      <div class="hero-slide-overlay"></div>
+
+      <button type="button" class="hero-arrow hero-arrow-left" id="heroPrevBtn" aria-label="Producto anterior">
+        ‹
+      </button>
+
+      <div class="hero-content hero-carousel-content">
+        <span class="hero-kicker">Producto destacado</span>
+        <h1 id="heroProductTitle">Ofertas Imperdibles</h1>
+        <p id="heroProductDescription">¡Precios bajos cerca de ti!</p>
+
+        <div class="hero-product-price-row">
+          <strong id="heroProductPrice"></strong>
+          <span id="heroProductCategory"></span>
+        </div>
+
+        <div class="hero-actions">
+          <button type="button" class="green-btn" id="heroAddCartBtn">
+            Añadir al carrito
+          </button>
+
+          <button type="button" class="hero-detail-btn" id="heroDetailBtn">
+            Ver detalles
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="hero-arrow hero-arrow-right" id="heroNextBtn" aria-label="Producto siguiente">
+        ›
+      </button>
+
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <section class="benefits-section">
+      <article class="benefit-card">
+        <div class="benefit-icon">🚚</div>
+        <h3>Envío a Domicilio</h3>
+        <p>Entrega hasta la puerta de tu hogar</p>
+      </article>
+
+      <article class="benefit-card">
+        <div class="benefit-icon">%</div>
+        <h3>Ofertas Diarias</h3>
+        <p>Descuentos especiales todos los días</p>
+      </article>
+
+      <article class="benefit-card">
+        <div class="benefit-icon">👨‍💼</div>
+        <h3>Atención Personalizada</h3>
+        <p>Consultas y ayuda para tus compras</p>
+      </article>
+    </section>
+
+    <section class="categories-section" id="categoriesSection">
+      <div class="section-header centered-section-header">
+        <div>
+          <h2>Comprar por Categoría</h2>
+          <p class="section-subtitle">Todas las categorías disponibles de la tienda</p>
+        </div>
+      </div>
+
+      <div class="categories-grid dynamic-categories-grid" id="categoriesGrid"></div>
+    </section>
+
+    <section class="promo-banner">
+      <div>
+        <h2>Envío gratis y domicilios hasta la puerta de tu casa</h2>
+        <button type="button" class="soft-btn">Más Información</button>
+      </div>
+    </section>
+
+    <section class="products-section featured-products-section" id="featuredProductsSection">
+      <div class="section-header">
+        <div>
+          <h2>Productos Destacados</h2>
+          <p class="section-subtitle">Los productos recomendados para ti</p>
+        </div>
+      </div>
+
+      <div class="products-grid compact-products-grid" id="featuredProductsGrid"></div>
+    </section>
+
+    <section class="products-section offers-products-section" id="offersProductsSection">
+      <div class="section-header">
+        <div>
+          <h2>Productos en Oferta</h2>
+          <p class="section-subtitle">Descuentos activos de la tienda</p>
+        </div>
+
+        <button type="button" class="green-btn" id="showOffersProducts">Ver Ofertas</button>
+      </div>
+
+      <div class="products-grid compact-products-grid" id="offersProductsGrid"></div>
+    </section>
+
+    <section class="category-browser-section" id="categoryBrowserSection">
+      <div class="section-header category-browser-header">
+        <div>
+          <span class="section-kicker">Categorías</span>
+          <h2 id="categoryBrowserTitle">Todos los productos</h2>
+          <p class="section-subtitle">Elige una categoría o mira todos los productos desde aquí</p>
+        </div>
+
+        <button type="button" class="secondary-category-btn" id="backToTopFromCategories">
+          Volver arriba
+        </button>
+      </div>
+
+      <div class="category-chip-row" id="categoryChips"></div>
+      <div class="products-grid compact-products-grid" id="categoryProductsGrid"></div>
+    </section>
+
+  </main>
+
+  <footer class="store-footer">
+    <div>
+      <h3>Sobre Nosotros</h3>
+      <a href="#">Quiénes Somos</a>
+      <a href="#">Términos y Condiciones</a>
+    </div>
+
+    <div>
+      <h3>Ayuda</h3>
+      <a href="#">Preguntas Frecuentes</a>
+      <a href="#">Política de Privacidad</a>
+    </div>
+
+    <div>
+      <h3>Servicio al Cliente</h3>
+      <a href="#">Contacto</a>
+      <a href="#">Envíos y Devoluciones</a>
+    </div>
+
+    <div>
+      <h3>Síguenos</h3>
+      <p>Facebook | Instagram | Twitter</p>
+    </div>
+  </footer>
+
+  <!-- Modal iniciar sesión -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="login-modal">
+      <button type="button" class="close-modal" id="closeLoginModal">×</button>
+
+      <h2>Iniciar Sesión</h2>
+      <p class="modal-subtitle">Ingresa tus datos para continuar comprando</p>
+
+      <form id="loginForm">
+        <div class="login-form-grid">
+          <label>
+            Correo
+            <input type="email" id="loginEmail" required />
+          </label>
+
+          <label>
+            Contraseña
+            <input type="password" id="loginPassword" required minlength="6" />
+          </label>
+        </div>
+
+        <div class="login-options">
+          <label class="remember-row">
+            <input type="checkbox" id="rememberUser" />
+            Recordarme
+          </label>
+
+          <button type="button" class="forgot-password-btn" id="forgotPasswordBtn">
+            ¿Olvidaste tu contraseña?
+          </button>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="cancelLogin">
+            Cancelar
+          </button>
+          <button type="submit" class="green-btn">
+            Entrar
+          </button>
+        </div>
+
+        <p class="register-text">
+          ¿No tienes cuenta?
+          <button type="button" id="showRegisterForm">Crear cuenta</button>
+        </p>
+      </form>
+
+
+
+      <form id="resetRequestForm" class="hidden password-reset-form">
+        <p class="modal-subtitle">Escribe tu correo y te enviaremos un código de recuperación.</p>
+
+        <label class="full-label">
+          Correo de tu cuenta
+          <input type="email" id="resetEmail" required />
+        </label>
+
+        <div class="password-reset-message hidden" id="resetRequestMessage"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="backToLoginFromReset">
+            Volver
+          </button>
+          <button type="submit" class="green-btn">
+            Enviar código
+          </button>
+        </div>
+      </form>
+
+      <form id="resetCodeForm" class="hidden password-reset-form">
+        <p class="modal-subtitle">Ingresa el código de 6 dígitos que recibiste.</p>
+
+        <label class="full-label">
+          Código OTP
+          <input type="text" id="resetCode" inputmode="numeric" maxlength="6" required />
+        </label>
+
+        <div class="password-reset-message hidden" id="resetCodeMessage"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="backToResetEmail">
+            Cambiar correo
+          </button>
+          <button type="submit" class="green-btn">
+            Validar código
+          </button>
+        </div>
+      </form>
+
+      <form id="resetPasswordForm" class="hidden password-reset-form">
+        <p class="modal-subtitle">Crea una nueva contraseña para tu cuenta.</p>
+
+        <div class="login-form-grid">
+          <label>
+            Nueva contraseña
+            <input type="password" id="resetNewPassword" required minlength="6" />
+          </label>
+
+          <label>
+            Confirmar contraseña
+            <input type="password" id="resetConfirmPassword" required minlength="6" />
+          </label>
+        </div>
+
+        <div class="password-reset-message hidden" id="resetPasswordMessage"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="backToResetCode">
+            Volver
+          </button>
+          <button type="submit" class="green-btn">
+            Cambiar contraseña
+          </button>
+        </div>
+      </form>
+
+      <form id="registerForm" class="hidden">
+        <div class="register-step-indicator">
+          <span class="register-step-dot active" data-register-dot="1">1</span>
+          <span class="register-step-line"></span>
+          <span class="register-step-dot" data-register-dot="2">2</span>
+          <span class="register-step-line"></span>
+          <span class="register-step-dot" data-register-dot="3">3</span>
+          <span class="register-step-line"></span>
+          <span class="register-step-dot" data-register-dot="4">4</span>
+        </div>
+
+        <section class="register-step" data-register-step="1">
+          <p class="modal-subtitle">Completa la información del cliente</p>
+
+          <div class="register-form-grid">
+            <label>
+              Nombre
+              <input type="text" id="registerName" required />
+            </label>
+
+            <label>
+              Apellido
+              <input type="text" id="registerLastName" required />
+            </label>
+
+            <label>
+              Documento
+              <input type="text" id="registerDocument" />
+            </label>
+
+            <label>
+              Teléfono
+              <input type="text" id="registerPhone" />
+            </label>
+
+            <label>
+              Género
+              <select id="registerGender">
+                <option value="">Sin género</option>
+              </select>
+            </label>
+
+            <label>
+              Barrio
+              <select id="registerNeighborhood">
+                <option value="">Sin barrio</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="full-label">
+            Dirección
+            <textarea id="registerAddress" rows="4"></textarea>
+          </label>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" id="backToLogin">
+              Volver
+            </button>
+            <button type="button" class="green-btn" id="continueRegisterStep1">
+              Confirmar
+            </button>
+          </div>
+        </section>
+
+        <section class="register-step hidden" data-register-step="2">
+          <p class="modal-subtitle">Ahora ingresa el correo que usarás para tu cuenta.</p>
+
+          <label class="full-label">
+            Correo
+            <input type="email" id="registerEmail" required />
+          </label>
+
+          <p class="register-otp-message" id="registerEmailMessage"></p>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" id="backToRegisterStep1">
+              Volver
+            </button>
+            <button type="button" class="green-btn" id="continueRegisterStep2">
+              Enviar código
+            </button>
+          </div>
+        </section>
+
+        <section class="register-step hidden" data-register-step="3">
+          <p class="modal-subtitle">Escribe el código OTP de 6 dígitos que llegó a tu correo.</p>
+
+          <label class="full-label">
+            Código OTP
+            <input 
+              type="text" 
+              id="registerOtpCode" 
+              inputmode="numeric"
+              maxlength="6" 
+              placeholder="Ej: 123456"
+            >
+          </label>
+
+          <p class="register-otp-message" id="registerOtpMessage"></p>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" id="backToRegisterStep2">
+              Cambiar correo
+            </button>
+            <button type="button" class="green-btn" id="continueRegisterStep3">
+              Confirmar código
+            </button>
+          </div>
+        </section>
+
+        <section class="register-step hidden" data-register-step="4">
+          <p class="modal-subtitle">Correo verificado. Crea tu contraseña para terminar.</p>
+
+          <div class="login-form-grid">
+            <label>
+              Contraseña
+              <input type="password" id="registerPassword" required minlength="6" />
+            </label>
+
+            <label>
+              Confirmar contraseña
+              <input type="password" id="registerPasswordConfirm" required minlength="6" />
+            </label>
+          </div>
+
+          <p class="register-otp-message" id="registerPasswordMessage"></p>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn" id="backToRegisterStep3">
+              Volver
+            </button>
+            <button type="button" class="green-btn" id="continueRegisterStep4">
+              Guardar
+            </button>
+          </div>
+        </section>
+      </form>    </div>
+  </div>
+
+  <!-- Modal detalle producto -->
+  <div class="modal-overlay" id="productDetailModal">
+    <div class="product-detail-modal">
+      <button type="button" class="close-modal" id="closeProductDetail">×</button>
+      <div class="detail-content" id="productDetailContent"></div>
+    </div>
+  </div>
+
+  <!-- Modal perfil -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="login-modal profile-modal">
+      <button type="button" class="close-modal" id="closeProfileModal">×</button>
+
+      <h2 id="profileModalTitle">Mi Perfil</h2>
+      <p class="modal-subtitle">Información de tu cuenta</p>
+
+      <form id="profileForm">
+        <div class="register-form-grid">
+          <label>
+            Nombre
+            <input type="text" id="profileName" required />
+          </label>
+
+          <label>
+            Apellido
+            <input type="text" id="profileLastName" />
+          </label>
+
+          <label>
+            Documento
+            <input type="text" id="profileDocument" />
+          </label>
+
+          <label>
+            Correo
+            <input type="email" id="profileEmail" required />
+          </label>
+
+          <label>
+            Teléfono
+            <input type="text" id="profilePhone" />
+          </label>
+
+          <label>
+            Género
+            <select id="profileGender">
+              <option value="">Sin género</option>
+            </select>
+          </label>
+
+          <label>
+            Barrio
+            <select id="profileNeighborhood">
+              <option value="">Sin barrio</option>
+            </select>
+          </label>
+
+          <label>
+            Rol
+            <input type="text" id="profileRole" disabled />
+          </label>
+        </div>
+
+        <label class="full-label">
+          Dirección
+          <textarea id="profileAddress" rows="4"></textarea>
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="cancelProfileModal">
+            Cerrar
+          </button>
+
+          <button type="submit" class="green-btn" id="saveProfileBtn">
+            Guardar cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button type="button" class="back-to-top-btn hidden" id="backToTopFloating" aria-label="Volver arriba">↑</button>
+
+  <script src="principal.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Listas - Store Super Joven</title>
+    <link rel="stylesheet" href="mis-listas.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span class="logo-icono"></span>
+        STORE SUPER JOVEN
+    </a>
+
+    <div class="buscador">
+        <input type="text" id="searchInput" placeholder="Buscar productos en mis listas..." autocomplete="off">
+        <button type="button" id="searchBtn" aria-label="Buscar productos en mis listas">⌕</button>
+        <div class="search-results-panel oculto" id="searchResultsPanel"></div>
+    </div>
+
+    <nav class="menu">
+        <div class="account-box">
+            <button type="button" class="header-action" id="linkSesion">
+                👤 Iniciar Sesión
+            </button>
+
+            <div class="account-menu oculto" id="accountMenu">
+                <button type="button" id="viewProfileBtn">Ver perfil</button>
+                <button type="button" id="editProfileBtn">Editar perfil</button>
+                <a href="../index.html" id="adminPanelLink" class="oculto">Ver administración</a>
+                <button type="button" id="logoutBtn" class="danger-option">Cerrar sesión</button>
+            </div>
+        </div>
+
+        <a href="mis-listas.html" class="activo">📋 Historial y Listas</a>
+
+        <a href="carrito.html">
+            🛒 Carrito
+            <span id="contadorCarrito">0</span>
+        </a>
+
+    </nav>
+</header>
+
+<section class="hero-listas">
+    <div>
+        <h1>Mis Listas</h1>
+        <p>Crea listas de productos, compra todo de nuevo y consulta tu historial.</p>
+    </div>
+</section>
+
+<main class="contenedor">
+
+    <section class="resumen-listas">
+        <article class="resumen-card">
+            <span class="resumen-icono">🛒</span>
+            <div>
+                <p>Total de compras</p>
+                <h2 id="totalCompras">0</h2>
+            </div>
+        </article>
+
+        <article class="resumen-card">
+            <span class="resumen-icono">📦</span>
+            <div>
+                <p>Productos comprados</p>
+                <h2 id="totalProductos">0</h2>
+            </div>
+        </article>
+
+        <article class="resumen-card">
+            <span class="resumen-icono">💰</span>
+            <div>
+                <p>Total gastado</p>
+                <h2 id="totalGastado">$0</h2>
+            </div>
+        </article>
+    </section>
+
+    <section class="listas-tabs" aria-label="Opciones de Mis Listas">
+        <button type="button" class="lista-tab activo" id="tabListasPersonales">📋 Mis listas</button>
+        <button type="button" class="lista-tab" id="tabHistorialCompras">🛒 Historial</button>
+    </section>
+
+    <section class="panel-listas listas-personales-panel" id="listasPersonalizadasSection">
+        <div class="panel-header">
+            <div>
+                <h2>Listas de productos</h2>
+                <p>Crea listas como mercado mensual, desayuno o productos favoritos.</p>
+            </div>
+        </div>
+
+        <div class="crear-lista-toolbar">
+            <button type="button" class="btn btn-verde" id="btnMostrarCrearLista">
+                Crear lista
+            </button>
+        </div>
+
+        <form id="formCrearLista" class="crear-lista-form lista-builder oculto">
+            <div class="lista-builder-header">
+                <div>
+                    <h3 id="listaBuilderTitulo">Crear nueva lista</h3>
+                    <p>Primero escribe el nombre, luego selecciona los productos y finalmente guarda la lista.</p>
+                </div>
+            </div>
+
+            <label class="lista-builder-label">
+                Nombre de la lista
+                <input type="text" id="nuevaListaNombre" placeholder="Ej: Mercado mensual" maxlength="80" required>
+            </label>
+
+            <div class="agregar-producto-lista lista-builder-add">
+                <select id="listaProductoSelect" aria-label="Producto para agregar a la lista">
+                    <option value="">Seleccionar producto...</option>
+                </select>
+
+                <input type="number" min="1" value="1" id="listaProductoCantidad" aria-label="Cantidad">
+
+                <button type="button" class="btn btn-verde" id="btnAgregarProductoTemporal">
+                    Agregar producto
+                </button>
+            </div>
+
+            <div id="listaBuilderProductos" class="productos-lista-personal lista-builder-preview">
+                <div class="lista-producto-vacio">Todavía no seleccionaste productos.</div>
+            </div>
+
+            <div class="lista-builder-actions">
+                <button type="button" class="btn btn-blanco" id="btnCancelarLista">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-verde" id="btnGuardarLista">
+                    Guardar lista
+                </button>
+            </div>
+        </form>
+
+        <div id="listasPersonalizadas" class="listas-personalizadas"></div>
+
+        <div id="listasPersonalizadasVacio" class="listas-vacio oculto">
+            <div class="vacio-icono">📋</div>
+            <h2>Aún no tienes listas creadas</h2>
+            <p>Crea una lista y agrega productos para comprarlos de nuevo cuando quieras.</p>
+        </div>
+    </section>
+
+    <section class="panel-listas historial-section oculto" id="historialSection">
+        <div class="panel-header">
+            <div>
+                <h2>Historial de compras</h2>
+                <p>Tus pedidos aparecerán aquí después de pagar.</p>
+            </div>
+
+            <button type="button" class="btn btn-verde btn-actualizar" id="btnActualizarListas">
+                Actualizar
+            </button>
+        </div>
+
+        <div id="historialCompras" class="historial-compras"></div>
+
+        <div id="misListasVacio" class="listas-vacio oculto">
+            <div class="vacio-icono">♥</div>
+            <h2>Aún no tienes compras registradas</h2>
+            <p>Cuando finalices una compra, aparecerá aquí automáticamente.</p>
+            <a href="index.html" class="btn btn-verde">Ir a comprar</a>
+        </div>
+    </section>
+
+</main>
+
+
+
+<div id="modalSesion" class="modal oculto">
+    <div class="modal-card">
+        <button type="button" id="cerrarModalSesion" class="cerrar">×</button>
+
+        <div class="modal-icono">👤</div>
+
+        <h2>Iniciar sesión</h2>
+
+        <p id="mensajeSesion">
+            Para ver tus listas debes iniciar sesión o crear una cuenta.
+        </p>
+
+        <form id="formLoginCarrito">
+            <label for="loginEmailCarrito">Correo</label>
+            <input
+                type="email"
+                id="loginEmailCarrito"
+                placeholder="Ingresa tu correo"
+                required
+            >
+
+            <label for="loginPasswordCarrito">Contraseña</label>
+            <input
+                type="password"
+                id="loginPasswordCarrito"
+                placeholder="Ingresa tu contraseña"
+                required
+            >
+
+            <button type="button" class="forgot-password-btn" id="forgotPasswordBtn">
+                ¿Olvidaste tu contraseña?
+            </button>
+
+            <div class="modal-botones">
+                <button type="submit" class="btn btn-verde">
+                    Iniciar sesión
+                </button>
+
+                <a href="index.html" class="btn btn-blanco">
+                    Crear cuenta
+                </a>
+            </div>
+        </form>
+
+        <form id="resetRequestForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Escribe tu correo y te enviaremos un código de recuperación.</p>
+
+            <label for="resetEmail">Correo de tu cuenta</label>
+            <input type="email" id="resetEmail" placeholder="Ingresa tu correo" required>
+
+            <div class="password-reset-message oculto" id="resetRequestMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToLoginFromReset">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Enviar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetCodeForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Ingresa el código de 6 dígitos que recibiste.</p>
+
+            <label for="resetCode">Código OTP</label>
+            <input type="text" id="resetCode" inputmode="numeric" maxlength="6" placeholder="000000" required>
+
+            <div class="password-reset-message oculto" id="resetCodeMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetEmail">
+                    Cambiar correo
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Validar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetPasswordForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Crea una nueva contraseña para tu cuenta.</p>
+
+            <label for="resetNewPassword">Nueva contraseña</label>
+            <input type="password" id="resetNewPassword" placeholder="Mínimo 6 caracteres" required minlength="6">
+
+            <label for="resetConfirmPassword">Confirmar contraseña</label>
+            <input type="password" id="resetConfirmPassword" placeholder="Repite la contraseña" required minlength="6">
+
+            <div class="password-reset-message oculto" id="resetPasswordMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetCode">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Cambiar contraseña
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<section id="profileModal" class="modal-overlay oculto">
+    <div class="login-modal profile-modal">
+        <button type="button" class="close-modal" id="closeProfileModal">×</button>
+
+        <h2 id="profileModalTitle">Mi Perfil</h2>
+        <p class="modal-subtitle">Información de tu cuenta</p>
+
+        <form id="profileForm">
+            <div class="register-form-grid">
+                <label>
+                    Nombre
+                    <input type="text" id="profileName" required>
+                </label>
+
+                <label>
+                    Apellido
+                    <input type="text" id="profileLastName">
+                </label>
+
+                <label>
+                    Documento
+                    <input type="text" id="profileDocument">
+                </label>
+
+                <label>
+                    Correo
+                    <input type="email" id="profileEmail" required>
+                </label>
+
+                <label>
+                    Teléfono
+                    <input type="text" id="profilePhone">
+                </label>
+
+                <label>
+                    Género
+                    <select id="profileGender">
+                        <option value="">Sin género</option>
+                    </select>
+                </label>
+
+                <label>
+                    Barrio
+                    <select id="profileNeighborhood">
+                        <option value="">Sin barrio</option>
+                    </select>
+                </label>
+
+                <label>
+                    Rol
+                    <input type="text" id="profileRole" disabled>
+                </label>
+            </div>
+
+            <label class="full-label">
+                Dirección
+                <textarea id="profileAddress" rows="4"></textarea>
+            </label>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-blanco" id="cancelProfileModal">
+                    Cerrar
+                </button>
+
+                <button type="submit" class="btn btn-verde" id="saveProfileBtn">
+                    Guardar cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="auth-reset.js"></script>
+<script src="mis-listas.js"></script>
+
+</body>
+</html>

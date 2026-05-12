@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - Store Super Joven</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span class="logo-icono"></span>
+        STORE SUPER JOVEN
+    </a>
+
+    <div class="buscador">
+        <input type="text" placeholder="Buscar productos...">
+        <span>⌕</span>
+    </div>
+
+    <nav class="menu">
+        <div class="account-box">
+            <button type="button" class="header-action" id="linkSesion">
+                👤 Iniciar Sesión
+            </button>
+
+            <div class="account-menu oculto" id="accountMenu">
+                <button type="button" id="viewProfileBtn">Ver perfil</button>
+                <button type="button" id="editProfileBtn">Editar perfil</button>
+                <a href="../index.html" id="adminPanelLink" class="oculto">Ver administración</a>
+                <button type="button" id="logoutBtn" class="danger-option">Cerrar sesión</button>
+            </div>
+        </div>
+
+        <a href="mis-listas.html">📋 Historial y Listas</a>
+
+        <a href="carrito.html" class="activo">
+            🛒 Carrito
+            <span id="contadorCarrito">0</span>
+        </a>
+    </nav>
+</header>
+
+<main class="checkout-page">
+
+    <section class="checkout-steps">
+        <div class="step done">
+            <div class="step-icon">🛒</div>
+            <strong>Carrito</strong>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step done">
+            <div class="step-icon">🚚</div>
+            <strong>Envío</strong>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step active">
+            <div class="step-icon">💳</div>
+            <strong>Pago</strong>
+        </div>
+    </section>
+
+    <section id="loginRequired" class="mensaje-bloque oculto">
+        <h2>Debes iniciar sesión</h2>
+        <p>Para finalizar la compra necesitas iniciar sesión o crear una cuenta.</p>
+
+        <div class="mensaje-actions">
+            <button type="button" class="btn btn-verde" id="openCheckoutLogin">Iniciar sesión</button>
+            <a href="carrito.html" class="btn btn-blanco">Volver al carrito</a>
+        </div>
+    </section>
+
+    <section id="emptyCartMessage" class="mensaje-bloque oculto">
+        <h2>No hay pedido para pagar</h2>
+        <p>Primero confirma tus datos de envío desde el carrito.</p>
+
+        <div class="mensaje-actions">
+            <a href="carrito.html" class="btn btn-verde">Volver al carrito</a>
+            <a href="index.html" class="btn btn-blanco">Ir a comprar</a>
+        </div>
+    </section>
+
+    <section id="checkoutContent" class="checkout-layout oculto">
+
+        <section class="checkout-card payment-card">
+            <div class="payment-header">
+                <div>
+                    <h1>Método de pago</h1>
+                    <p>Selecciona tu método de pago</p>
+                </div>
+
+                <div class="secure-label">
+                    🔒 Tu pago está 100% seguro
+                </div>
+            </div>
+
+            <div class="payment-content">
+                <div class="payment-tabs">
+                    <button type="button" class="payment-tab active" data-method="tarjeta">
+                        <span>💳</span>
+                        <strong>Tarjeta</strong>
+                    </button>
+
+                    <button type="button" class="payment-tab" data-method="nequi">
+                        <span>🧾</span>
+                        <strong>Nequi / Daviplata</strong>
+                    </button>
+
+                    <button type="button" class="payment-tab" data-method="transferencia">
+                        <span>🏦</span>
+                        <strong>Transferencia</strong>
+                    </button>
+
+                    <button type="button" class="payment-tab" data-method="contra_entrega">
+                        <span>📦</span>
+                        <strong>Contra entrega</strong>
+                    </button>
+                </div>
+
+                <form id="paymentForm" class="payment-form">
+
+                    <section class="payment-method-panel" id="panelTarjeta">
+                        <div class="method-title-row">
+                            <h2>Paga con tarjeta débito o crédito</h2>
+
+                            <div class="card-brands">
+                                <span>VISA</span>
+                                <span>🔴🟠</span>
+                                <span>AMEX</span>
+                            </div>
+                        </div>
+
+                        <label>
+                            Nombre en la tarjeta
+                            <input type="text" id="cardName" placeholder="Como aparece en la tarjeta">
+                        </label>
+
+                        <label>
+                            Número de tarjeta
+                            <div class="input-icon-wrap">
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                <span>💳</span>
+                            </div>
+                        </label>
+
+                        <div class="payment-row">
+                            <label>
+                                MM/AA
+                                <input type="text" id="cardDate" placeholder="MM/AA" maxlength="5">
+                            </label>
+
+                            <label>
+                                CVV
+                                <div class="input-icon-wrap">
+                                    <input type="text" id="cardCvv" placeholder="123" maxlength="4">
+                                    <span>?</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="protected-box">
+                            <span>🛡️</span>
+                            <div>
+                                <strong>Tus datos están protegidos</strong>
+                                <p>Usamos encriptación para garantizar la seguridad de tu información.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="payment-method-panel oculto" id="panelNequi">
+                        <div class="method-title-row">
+                            <h2>Paga con Nequi o Daviplata</h2>
+                        </div>
+
+                        <label>
+                            Número de celular
+                            <input type="tel" id="nequiPhone" placeholder="Ej: 3001234567">
+                        </label>
+
+                        <div class="info-payment-box">
+                            <strong>Después de presionar “Pagar ahora”</strong>
+                            <p>Tu pedido quedará registrado y nos comunicaremos contigo para validar el pago.</p>
+                        </div>
+                    </section>
+
+                    <section class="payment-method-panel oculto" id="panelTransferencia">
+                        <div class="method-title-row">
+                            <h2>Pago por transferencia</h2>
+                        </div>
+
+                        <div class="bank-box">
+                            <p><strong>Banco:</strong> Bancolombia</p>
+                            <p><strong>Titular:</strong> Store Super Joven</p>
+                            <p><strong>Cuenta:</strong> 0000000000</p>
+                        </div>
+
+                        <label>
+                            Referencia de pago
+                            <input type="text" id="transferReference" placeholder="Opcional">
+                        </label>
+
+                        <div class="info-payment-box">
+                            <strong>Confirmación pendiente</strong>
+                            <p>El pedido se registrará como pendiente mientras confirmamos la transferencia.</p>
+                        </div>
+                    </section>
+
+                    <section class="payment-method-panel oculto" id="panelContraEntrega">
+                        <div class="method-title-row">
+                            <h2>Pago contra entrega</h2>
+                        </div>
+
+                        <div class="info-payment-box">
+                            <strong>Pagas cuando recibes tu pedido</strong>
+                            <p>Ten listo el valor total al momento de la entrega.</p>
+                        </div>
+                    </section>
+
+                </form>
+            </div>
+        </section>
+
+        <aside class="summary-card">
+            <h2>Resumen del pedido</h2>
+
+            <div id="checkoutProducts" class="checkout-products"></div>
+
+            <div class="summary-line">
+                <span>Subtotal:</span>
+                <strong id="subtotalText">$0</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Envío:</span>
+                <strong id="shippingText">$0</strong>
+            </div>
+
+            <div class="summary-line total">
+                <span>Total:</span>
+                <strong id="totalText">$0</strong>
+            </div>
+
+            <button type="button" id="payNowBtn" class="btn btn-verde pay-btn">
+                Pagar ahora
+            </button>
+
+            <div class="safe-pay">
+                🛡️ Pago 100% seguro
+            </div>
+        </aside>
+
+    </section>
+
+    <section id="checkoutBenefits" class="checkout-benefits oculto">
+        <a href="carrito.html" class="back-cart">
+            ← Volver al carrito
+        </a>
+
+        <div class="benefit-item">
+            <span>🛡️</span>
+            <div>
+                <strong>Pago seguro</strong>
+                <p>Tus datos protegidos</p>
+            </div>
+        </div>
+
+        <div class="benefit-item">
+            <span>🚚</span>
+            <div>
+                <strong>Envío rápido</strong>
+                <p>Recibe tu pedido pronto</p>
+            </div>
+        </div>
+
+        <div class="benefit-item">
+            <span>🏅</span>
+            <div>
+                <strong>Productos originales</strong>
+                <p>Calidad garantizada</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<div id="modalSesion" class="modal oculto">
+    <div class="modal-card login-card">
+        <button type="button" id="cerrarModalSesion" class="cerrar">×</button>
+
+        <div class="modal-icono">👤</div>
+
+        <h2>Iniciar sesión</h2>
+
+        <p id="mensajeSesion">
+            Para continuar con la compra debes iniciar sesión o crear una cuenta.
+        </p>
+
+        <form id="formLoginCarrito">
+            <label for="loginEmailCarrito">Correo</label>
+            <input
+                type="email"
+                id="loginEmailCarrito"
+                placeholder="Ingresa tu correo"
+                required
+            >
+
+            <label for="loginPasswordCarrito">Contraseña</label>
+            <input
+                type="password"
+                id="loginPasswordCarrito"
+                placeholder="Ingresa tu contraseña"
+                required
+            >
+
+
+            <button type="button" class="forgot-password-btn" id="forgotPasswordBtn">
+                ¿Olvidaste tu contraseña?
+            </button>
+
+            <div class="modal-botones">
+                <button type="submit" class="btn btn-verde">
+                    Iniciar sesión
+                </button>
+
+                <a href="index.html" class="btn btn-blanco">
+                    Crear cuenta
+                </a>
+            </div>
+        </form>
+
+        <form id="resetRequestForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Escribe tu correo y te enviaremos un código de recuperación.</p>
+
+            <label for="resetEmail">Correo de tu cuenta</label>
+            <input type="email" id="resetEmail" placeholder="Ingresa tu correo" required>
+
+            <div class="password-reset-message oculto" id="resetRequestMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToLoginFromReset">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Enviar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetCodeForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Ingresa el código de 6 dígitos que recibiste.</p>
+
+            <label for="resetCode">Código OTP</label>
+            <input type="text" id="resetCode" inputmode="numeric" maxlength="6" placeholder="000000" required>
+
+            <div class="password-reset-message oculto" id="resetCodeMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetEmail">
+                    Cambiar correo
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Validar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetPasswordForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Crea una nueva contraseña para tu cuenta.</p>
+
+            <label for="resetNewPassword">Nueva contraseña</label>
+            <input type="password" id="resetNewPassword" placeholder="Mínimo 6 caracteres" required minlength="6">
+
+            <label for="resetConfirmPassword">Confirmar contraseña</label>
+            <input type="password" id="resetConfirmPassword" placeholder="Repite la contraseña" required minlength="6">
+
+            <div class="password-reset-message oculto" id="resetPasswordMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetCode">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Cambiar contraseña
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<section id="profileModal" class="modal-overlay oculto">
+    <div class="login-modal profile-modal">
+        <button type="button" class="close-modal" id="closeProfileModal">×</button>
+
+        <h2 id="profileModalTitle">Mi Perfil</h2>
+        <p class="modal-subtitle">Información de tu cuenta</p>
+
+        <form id="profileForm">
+            <div class="register-form-grid">
+                <label>
+                    Nombre
+                    <input type="text" id="profileName" required>
+                </label>
+
+                <label>
+                    Apellido
+                    <input type="text" id="profileLastName">
+                </label>
+
+                <label>
+                    Documento
+                    <input type="text" id="profileDocument">
+                </label>
+
+                <label>
+                    Correo
+                    <input type="email" id="profileEmail" required>
+                </label>
+
+                <label>
+                    Teléfono
+                    <input type="text" id="profilePhone">
+                </label>
+
+                <label>
+                    Género
+                    <select id="profileGender">
+                        <option value="">Sin género</option>
+                    </select>
+                </label>
+
+                <label>
+                    Barrio
+                    <select id="profileNeighborhood">
+                        <option value="">Sin barrio</option>
+                    </select>
+                </label>
+
+                <label>
+                    Rol
+                    <input type="text" id="profileRole" disabled>
+                </label>
+            </div>
+
+            <label class="full-label">
+                Dirección
+                <textarea id="profileAddress" rows="4"></textarea>
+            </label>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-blanco" id="cancelProfileModal">
+                    Cerrar
+                </button>
+
+                <button type="submit" class="btn btn-verde" id="saveProfileBtn">
+                    Guardar cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div id="successModal" class="modal oculto">
+    <div class="modal-card">
+        <div class="success-icon">✓</div>
+
+        <h2>Pedido creado correctamente</h2>
+        <p id="successMessage">Tu pedido fue registrado.</p>
+
+        <div class="modal-actions">
+            <a href="mis-listas.html" class="btn btn-verde">Ver Mis Listas</a>
+            <a href="index.html" class="btn btn-blanco">Volver a la tienda</a>
+        </div>
+    </div>
+</div>
+
+<script src="auth-reset.js"></script>
+<script src="checkout.js"></script>
+
+</body>
+</html>

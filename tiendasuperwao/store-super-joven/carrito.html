@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Store Super Joven</title>
+    <link rel="stylesheet" href="carrito.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span class="logo-icono"></span>
+        STORE SUPER JOVEN
+    </a>
+
+    <div class="buscador">
+        <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+        <button type="button" id="searchBtn" aria-label="Buscar productos">⌕</button>
+        <div class="search-results-panel oculto" id="searchResultsPanel"></div>
+    </div>
+
+    <nav class="menu">
+        <div class="account-box">
+            <button type="button" class="header-action" id="linkSesion">
+                👤 Iniciar Sesión
+            </button>
+
+            <div class="account-menu oculto" id="accountMenu">
+                <button type="button" id="viewProfileBtn">Ver perfil</button>
+                <button type="button" id="editProfileBtn">Editar perfil</button>
+                <a href="../index.html" id="adminPanelLink" class="oculto">Ver administración</a>
+                <button type="button" id="logoutBtn" class="danger-option">Cerrar sesión</button>
+            </div>
+        </div>
+
+        <a href="mis-listas.html">📋 Historial y Listas</a>
+
+        <a href="carrito.html" class="activo">
+            🛒 Carrito
+            <span id="contadorCarrito">0</span>
+        </a>
+
+    
+    </nav>
+</header>
+
+<section class="hero-carrito">
+    <div>
+        <h1>Carrito de Compras</h1>
+        <p>Revisa tu pedido y ajusta cantidades antes de finalizar.</p>
+    </div>
+</section>
+
+<main class="contenedor carrito-layout">
+
+    <section class="zona-productos">
+        <div id="listaCarrito" class="lista-carrito"></div>
+
+        <div id="carritoVacio" class="carrito-vacio oculto">
+            <h2>Tu carrito está vacío</h2>
+            <p>Agrega productos desde la página principal para continuar.</p>
+            <a href="index.html" class="btn btn-verde">Ir a comprar</a>
+        </div>
+    </section>
+
+    <aside class="resumen-card">
+        <h2>Resumen del Pedido</h2>
+
+        <div class="fila-resumen">
+            <span>Subtotal:</span>
+            <strong id="subtotalTexto">$0</strong>
+        </div>
+
+        <div class="fila-resumen">
+            <span>Envío:</span>
+            <strong id="envioTexto">$0</strong>
+        </div>
+
+        <div class="fila-resumen total">
+            <span>Total:</span>
+            <strong id="totalTexto">$0</strong>
+        </div>
+
+        <button type="button" id="btnContinuarCompra" class="btn btn-verde">
+            Continuar compra
+        </button>
+
+        <a href="index.html" class="seguir-comprando">
+            Seguir comprando
+        </a>
+    </aside>
+
+</main>
+
+<section id="panelEnvio" class="panel-envio oculto">
+    <div class="formulario-envio">
+        <div class="form-header">
+            <div>
+                <h2>Datos de envío</h2>
+                <p>Confirma tus datos antes de ir al pago.</p>
+            </div>
+
+            <button type="button" id="cerrarPanelEnvio" class="cerrar">×</button>
+        </div>
+
+                <form id="formEnvio">
+            <div class="form-grid">
+                <div>
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div>
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+
+                <div>
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div>
+                    <label for="barrioEnvio">Barrio de entrega</label>
+                    <select id="barrioEnvio" name="barrioEnvio" required>
+                        <option value="">Selecciona tu barrio</option>
+                    </select>
+                    <small class="envio-distancia-info" id="envioDistanciaInfo"></small>
+                </div>
+
+                <div class="campo-completo">
+                    <label for="direccion">Dirección</label>
+                    <input 
+                        type="text" 
+                        id="direccion" 
+                        name="direccion" 
+                        placeholder="Ej: Calle 10 # 20-30"
+                        required
+                    >
+                </div>
+
+                <div class="campo-completo">
+                    <label for="referencia">Referencia</label>
+                    <textarea 
+                        id="referencia" 
+                        name="referencia" 
+                        placeholder="Ej: casa azul, segundo piso, cerca al parque"
+                    ></textarea>
+                </div>
+            </div>
+
+<div class="resumen-final">
+                <p><strong>Subtotal:</strong> <span id="subtotalFinal">$0</span></p>
+                <p><strong>Envío:</strong> <span id="envioFinal">$0</span></p>
+                <p><strong>Total:</strong> <span id="totalFinal">$0</span></p>
+            </div>
+
+            <button type="submit" class="btn btn-verde">
+                Continuar al pago
+            </button>
+        </form>
+    </div>
+</section>
+
+<div id="modalSesion" class="modal oculto">
+    <div class="modal-card">
+        <button type="button" id="cerrarModalSesion" class="cerrar">×</button>
+
+        <div class="modal-icono">👤</div>
+
+        <h2>Iniciar sesión</h2>
+
+        <p id="mensajeSesion">
+            Para continuar con la compra debes iniciar sesión o crear una cuenta.
+        </p>
+
+        <form id="formLoginCarrito">
+            <label for="loginEmailCarrito">Correo</label>
+            <input 
+                type="email" 
+                id="loginEmailCarrito" 
+                placeholder="Ingresa tu correo"
+                required
+            >
+
+            <label for="loginPasswordCarrito">Contraseña</label>
+            <input 
+                type="password" 
+                id="loginPasswordCarrito" 
+                placeholder="Ingresa tu contraseña"
+                required
+            >
+
+
+            <button type="button" class="forgot-password-btn" id="forgotPasswordBtn">
+                ¿Olvidaste tu contraseña?
+            </button>
+
+            <div class="modal-botones">
+                <button type="submit" class="btn btn-verde">
+                    Iniciar sesión
+                </button>
+
+                <a href="index.html" class="btn btn-blanco">
+                    Crear cuenta
+                </a>
+            </div>
+        </form>
+
+        <form id="resetRequestForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Escribe tu correo y te enviaremos un código de recuperación.</p>
+
+            <label for="resetEmail">Correo de tu cuenta</label>
+            <input type="email" id="resetEmail" placeholder="Ingresa tu correo" required>
+
+            <div class="password-reset-message oculto" id="resetRequestMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToLoginFromReset">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Enviar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetCodeForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Ingresa el código de 6 dígitos que recibiste.</p>
+
+            <label for="resetCode">Código OTP</label>
+            <input type="text" id="resetCode" inputmode="numeric" maxlength="6" placeholder="000000" required>
+
+            <div class="password-reset-message oculto" id="resetCodeMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetEmail">
+                    Cambiar correo
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Validar código
+                </button>
+            </div>
+        </form>
+
+        <form id="resetPasswordForm" class="password-reset-form oculto">
+            <p class="reset-subtitle">Crea una nueva contraseña para tu cuenta.</p>
+
+            <label for="resetNewPassword">Nueva contraseña</label>
+            <input type="password" id="resetNewPassword" placeholder="Mínimo 6 caracteres" required minlength="6">
+
+            <label for="resetConfirmPassword">Confirmar contraseña</label>
+            <input type="password" id="resetConfirmPassword" placeholder="Repite la contraseña" required minlength="6">
+
+            <div class="password-reset-message oculto" id="resetPasswordMessage"></div>
+
+            <div class="modal-botones">
+                <button type="button" class="btn btn-blanco" id="backToResetCode">
+                    Volver
+                </button>
+                <button type="submit" class="btn btn-verde">
+                    Cambiar contraseña
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<section id="profileModal" class="modal-overlay oculto">
+    <div class="login-modal profile-modal">
+        <button type="button" class="close-modal" id="closeProfileModal">×</button>
+
+        <h2 id="profileModalTitle">Mi Perfil</h2>
+        <p class="modal-subtitle">Información de tu cuenta</p>
+
+        <form id="profileForm">
+            <div class="register-form-grid">
+                <label>
+                    Nombre
+                    <input type="text" id="profileName" required>
+                </label>
+
+                <label>
+                    Apellido
+                    <input type="text" id="profileLastName">
+                </label>
+
+                <label>
+                    Documento
+                    <input type="text" id="profileDocument">
+                </label>
+
+                <label>
+                    Correo
+                    <input type="email" id="profileEmail" required>
+                </label>
+
+                <label>
+                    Teléfono
+                    <input type="text" id="profilePhone">
+                </label>
+
+                <label>
+                    Género
+                    <select id="profileGender">
+                        <option value="">Sin género</option>
+                    </select>
+                </label>
+
+                <label>
+                    Barrio
+                    <select id="profileNeighborhood">
+                        <option value="">Sin barrio</option>
+                    </select>
+                </label>
+
+                <label>
+                    Rol
+                    <input type="text" id="profileRole" disabled>
+                </label>
+            </div>
+
+            <label class="full-label">
+                Dirección
+                <textarea id="profileAddress" rows="4"></textarea>
+            </label>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-blanco" id="cancelProfileModal">
+                    Cerrar
+                </button>
+
+                <button type="submit" class="btn btn-verde" id="saveProfileBtn">
+                    Guardar cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="auth-reset.js"></script>
+<script src="carrito.js"></script>
+
+</body>
+</html>
